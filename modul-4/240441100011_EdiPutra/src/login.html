@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Login</title>
+  <link rel="stylesheet" href="./output.css">
+</head>
+<body class="h-screen">
+  <div class="flex flex-wrap h-full">
+    <!-- kiri gambar -->
+    <div class="bg-violet-700 flex items-center justify-center w-1/2">
+      <img src="../ASSET SESI 1/Gambar 5.png" alt="gambar 5" class="px-8">
+    </div>
+    <!-- kanan -->
+    <div class="w-1/2 px-16 flex flex-col justify-center">
+      <img src="../ASSET SESI 1/logo.png" alt="logo" class="w-[250px] mb-10">
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">Mulai Hari Ini</h2>
+      <p class="text-base text-gray-600 mb-6">Menunggu besok? Bisa jadi kamu takkan pernah mulai</p>
+      <!-- form -->
+      <form id="login" class="space-y-6">
+        <!-- email  -->
+        <div>
+          <label for="email" class="block text-base font-medium text-gray-700 mb-2">Alamat Email</label>
+          <input type="email" id="email" name="email" placeholder="Masukkan Alamat Email Anda"
+          class="w-[350px] px-4 py-2 border border-gray-300 rounded-full focus:outline-none">
+          <p id="emailError" class="text-red-500 text-sm mt-auto hidden">Email tidak boleh kosong</p>
+        </div>
+        <!-- nama lengkap -->
+        <div>
+          <label for="name" class="block text-base font-medium text-gray-700 mb-2">Nama Lengkap</label>
+          <input type="text" id="name" name="name" placeholder="Masukkan Nama Lengkap Anda"
+          class="w-[350px] px-4 py-2 border border-gray-300 rounded-full focus:outline-none">
+          <p id="nameError" class="text-red-500 text-sm mt-auto hidden">Nama tidak boleh kosong</p>
+        </div>
+        <!-- password -->
+        <div>
+          <label for="password" class="block text-base font-medium text-gray-700 mb-2">Password</label>
+          <input type="password" id="password" name="password" placeholder="Masukkan Password Anda"
+          class="w-[350px] px-4 py-2 border border-gray-300 rounded-full focus:outline-none">
+          <p id="passwordError" class="text-red-500 text-sm mt-auto hidden">Password tidak boleh kosong</p>
+        </div>
+        <!-- tombol signup -->
+        <button type="submit" class="w-[350px] my-8 bg-violet-700 text-white py-2 rounded-full hover:bg-purple-700 transition duration-300">
+          Sign Up
+        </button>
+        <!-- tombol google -->
+        <button type="button" class="w-[350px] flex items-center justify-center font-semibold bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-full hover:bg-gray-50 transition duration-300">
+          <img src="../ASSET SESI 1/ic_google.png" alt="google" class="mx-2 w-[25px]">Sign up with Google
+        </button>
+      </form>
+    </div>
+  </div>
+  <!-- javascript validasi form -->
+  <script>
+    const loginForm = document.getElementById("login");
+    const emailInput = document.getElementById("email");
+    const nameInput = document.getElementById("name");
+    const passwordInput = document.getElementById("password");
+    const emailError = document.getElementById("emailError");
+    const nameError = document.getElementById("nameError");
+    const passwordError = document.getElementById("passwordError");
+
+    loginForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      let isValid = true;
+
+      // validasi email
+      if (emailInput.value.trim() === "") {
+        emailError.classList.remove("hidden");
+        emailInput.classList.add("border-red-500");
+        isValid = false;
+      } else {
+        emailError.classList.add("hidden");
+        emailInput.classList.remove("border-red-500");
+      }
+      // Validasi nama
+      if (nameInput.value.trim() === "") {
+        nameError.classList.remove("hidden");
+        nameInput.classList.add("border-red-500");
+        isValid = false;
+      } else {
+        nameError.classList.add("hidden");
+        nameInput.classList.remove("border-red-500");
+      }
+      // Validasi password
+      if (passwordInput.value.trim() === "") {
+        passwordError.classList.remove("hidden");
+        passwordInput.classList.add("border-red-500");
+        isValid = false;
+      } else {
+        passwordError.classList.add("hidden");
+        passwordInput.classList.remove("border-red-500");
+      }
+      // Jika semua validasi berhasil
+      if (isValid) {
+        alert("Pendaftaran berhasil!");
+        // Kirim form
+        this.submit();
+      }
+    });
+  </script>
+</body>
+</html>
